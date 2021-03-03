@@ -13,6 +13,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/bootstrap-tokenfield.css',
         'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback',
         'assets/plugins/fontawesome-free/css/all.min.css',
         'assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
@@ -71,6 +72,7 @@ class AppAsset extends AssetBundle
         'assets/plugins/datatables-buttons/js/buttons.print.min.js',
         'assets/plugins/datatables-buttons/js/buttons.colVis.min.js',
         'assets/customjs/ajax-modal-popup.js',
+        'js/bootstrap-tokenfield.js',
 
     ];
     // public $depends = [

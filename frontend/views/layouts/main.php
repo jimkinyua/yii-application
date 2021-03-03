@@ -162,6 +162,41 @@ AppAsset::register($this);
 
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link nav-edit_evaluator">
+              <i class="nav-icon fas fa-user-secret"></i>
+              <p>
+                Evaluations
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="/evaluations/" class="nav-link nav-new_evaluator tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Open  Evaluations</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/evaluations/submitted" class="nav-link nav-evaluator_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Submitted Evaluations</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/evaluations/reviewed" class="nav-link nav-evaluator_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Reviewed Evaluations</p>
+                </a>
+              </li>
+
+
+            </ul>
+          </li>
          
         <?//php endif; ?>
         </ul>
@@ -280,21 +315,23 @@ AppAsset::register($this);
   <!-- /.content-wrapper -->
       <?php
           yii\bootstrap\Modal::begin([
-              'headerOptions' => ['id' => 'modalHeader'],
-              'id' => 'modal',
-              'size' => 'modal-lg',
-              'closeButton' => [
-                  'id'=>'close-button',
-                  'class'=>'close',
-                  'data-dismiss' =>'modal',
-                  ],
-              //keeps from closing modal with esc key or by clicking out of the modal.
-              // user must click cancel or X to close
-              'clientOptions' => [
-                  'backdrop' => false, 'keyboard' => true
-                  ]
-          ]);
-          echo "<div id='modalContent'><div style='text-align:center'>" . Html::img('@web/img/radio.gif')  . "</div></div>";
+                'headerOptions' => ['id' => 'modalHeader'],
+                'id' => 'modal',
+                'size' => 'modal-lg',
+                'closeButton' => [
+                    'id'=>'close-button',
+                    'class'=>'close',
+                    'data-dismiss' =>'modal',
+                    ],
+            
+                'clientOptions' => [
+                    'backdrop' => true, 'keyboard' => true
+                    ]
+            ]);
+            echo "<div id='modalContent'>
+                    <div style='text-align:center'>" . Html::img('@web/img/radio.gif')."
+                    </div>
+              </div>";
           yii\bootstrap\Modal::end();
     ?>
  

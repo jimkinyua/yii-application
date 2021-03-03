@@ -79,15 +79,24 @@ class IndividualWorkPlanController extends Controller
         if ($model->load(Yii::$app->request->post()) ) {
             $model->EmpNo = Yii::$app->user->identity->no;
             $model->DeptWorkPlanId = $DepartmentWorkPlanId;
-            $model->save();
+            $model->ImmediateSupervisor = Yii::$app->user->identity->supervisorno;
+
+            if( $model->save()){
+                return $this->redirect(['view', 'id' => $model->IndividualWorkPlanId]);
+
+            }
+            echo '<pre>';
+            print_r($model->geterrors());
+            exit;
+
             
-            return $this->redirect(['view', 'id' => $model->IndividualWorkPlanId]);
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
     }
+    
 
     /**
      * Updates an existing IndividualWorkPlan model.
@@ -180,6 +189,7 @@ class IndividualWorkPlanController extends Controller
         $searchModel = new IndividualWorkPlanSearch();
         $dataProvider = $searchModel->search([$searchModel->formName()=>['Status'=>3]]);
         $dataProvider->query->where('IndividualWorkPlan.Status = 3');
+       
         return $this->render('ApprovedIndividualPlans', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

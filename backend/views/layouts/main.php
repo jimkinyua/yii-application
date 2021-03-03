@@ -108,16 +108,46 @@ AppAsset::register($this);
               </p>
             </a>
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <a href="/strategic-plan-periods/" class="nav-link nav-new_user tree-item">
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Startegic Plan Periods</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="/strategic-objectives" class="nav-link nav-user_list tree-item">
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Startegic Objectives</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/target-types" class="nav-link nav-user_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Targets Types</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/targets" class="nav-link nav-user_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Targets</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/navision-job-groups" class="nav-link nav-user_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Job Groups </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/appraisal-periods" class="nav-link nav-user_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Appraisal Periods </p>
                 </a>
               </li>
             </ul>
@@ -189,6 +219,30 @@ AppAsset::register($this);
                 </a>
               </li>
 
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link nav-edit_user">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Employee Evalauations
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/evaluations/submitted" class="nav-link nav-new_user tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p> Submitted Employee Evaluations </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/corporate-work-plan/submitted" class="nav-link nav-user_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p> Submitted Corporate Work Plans</p>
+                </a>
+              </li>
             </ul>
           </li>
          

@@ -94,4 +94,11 @@ class IndividualObjectives extends \yii\db\ActiveRecord
         return Tasks::find()->where(['IndividualObjectiveId'=>$this->IndividualObjectiveId])->sum('weight');
     }
 
+    public function getTotalTaskWeightedScore(){
+        return Tasks::find()
+        ->where(['IndividualObjectiveId'=>$this->IndividualObjectiveId])
+        ->sum('AgreedScore * (weight/100)');
+
+    }
+
 }

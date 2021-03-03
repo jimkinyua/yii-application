@@ -10,8 +10,8 @@ use Yii;
  * @property int $PlanId
  * @property string $Name
  *
+ * @property AppraisalPeriods[] $appraisalPeriods
  * @property CorporateWorkPlan[] $corporateWorkPlans
- * @property StrategicObjectives[] $strategicObjectives
  */
 class StrategicPlanPeriods extends \yii\db\ActiveRecord
 {
@@ -46,6 +46,16 @@ class StrategicPlanPeriods extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[AppraisalPeriods]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAppraisalPeriods()
+    {
+        return $this->hasMany(AppraisalPeriods::className(), ['StarategicPlanPeriod' => 'PlanId']);
+    }
+
+    /**
      * Gets query for [[CorporateWorkPlans]].
      *
      * @return \yii\db\ActiveQuery
@@ -53,15 +63,5 @@ class StrategicPlanPeriods extends \yii\db\ActiveRecord
     public function getCorporateWorkPlans()
     {
         return $this->hasMany(CorporateWorkPlan::className(), ['StrategicPlanId' => 'PlanId']);
-    }
-
-    /**
-     * Gets query for [[StrategicObjectives]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getStrategicObjectives()
-    {
-        return $this->hasMany(StrategicObjectives::className(), ['StrategicPlanId' => 'PlanId']);
     }
 }

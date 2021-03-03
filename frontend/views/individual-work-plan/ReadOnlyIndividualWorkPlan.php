@@ -28,6 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'title' => 'Print Workplan','target'=>'_blank'])
         ?>
     </div>
+
+    <?php if($model->EmpNo = Yii::$app->user->identity->no && $model->Status ==3 ):?>
+    <div class = "eval" style="float: right";>
+        <?= Html::button('Create Evalauation',
+                    [  'value' => Url::to(['evaluations/create',
+                        'IndividualWorkPlanId'=>$model->IndividualWorkPlanId,]),
+                        'title' => 'Create Evaluation For Work Plan',
+                        'class' => 'btn btn-success 
+                        btn-flat border-warning showModalButton',
+                         ]
+                    ); 
+        ?>
+    </div>
+
+<?php endif; ?>
   <br>
  
     <div class="card-body">

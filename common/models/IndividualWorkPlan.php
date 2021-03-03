@@ -11,9 +11,15 @@ use Yii;
  * @property string $Code
  * @property string $Description
  * @property string $EmpNo
- * @property int $DeptObjvId
+ * @property int $DeptWorkPlanId
+ * @property int|null $Status
+ * @property string|null $ImmediateSupervisor
+ * @property string|null $RejectReason
+ * @property string|null $ApprovalDate
  *
+ * @property Evaluations[] $evaluations
  * @property IndividualObjectives[] $individualObjectives
+ * @property DepartmentWorkPlans $deptWorkPlan
  */
 class IndividualWorkPlan extends \yii\db\ActiveRecord
 {
@@ -32,11 +38,13 @@ class IndividualWorkPlan extends \yii\db\ActiveRecord
     {
         return [
             [['Description', 'EmpNo', 'DeptWorkPlanId'], 'required'],
-            [['Code', 'Description'], 'string'],
-            [['DeptWorkPlanId'], 'integer'],
+            [['Code', 'Description', 'RejectReason'], 'string'],
+            [['DeptWorkPlanId', 'Status'], 'integer'],
+            [['ApprovalDate'], 'safe'],
             [['Status'], 'default', 'value'=> 0], //Open
-            [['Code'], 'default', 'value'=> 'INDIV_WORKPLAN_'.date('Y').'_'.rand(5, 100)], //Open
-            [['EmpNo'], 'string', 'max' => 50],
+            [['Code'], 'default', 'value'=> 'INDIVIPLAN_'.date('Y').'_'.rand(5, 100)], //Open
+            [['EmpNo', 'ImmediateSupervisor'], 'string', 'max' => 50],
+            [['DeptWorkPlanId'], 'exist', 'skipOnError' => true, 'targetClass' => DepartmentWorkPlans::className(), 'targetAttribute' => ['DeptWorkPlanId' => 'DepartmentWorkPlanId']],
         ];
     }
 
@@ -50,9 +58,22 @@ class IndividualWorkPlan extends \yii\db\ActiveRecord
             'Code' => 'Code',
             'Description' => 'Description',
             'EmpNo' => 'Emp No',
-            'DeptWorkPlanId' => 'Deprtment Work Plan ',
-            'RejectReason'=> 'Reason for Rejection',
+            'DeptWorkPlanId' => 'Dept Work Plan ID',
+            'Status' => 'Status',
+            'ImmediateSupervisor' => 'Immediate Supervisor',
+            'RejectReason' => 'Reject Reason',
+            'ApprovalDate' => 'Approval Date',
         ];
+    }
+
+    /**
+     * Gets query for [[Evaluations]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvaluations()
+    {
+        return $this->hasMany(Evaluations::className(), ['WorkPlanId' => 'IndividualWorkPlanId']);
     }
 
     /**
@@ -65,7 +86,7 @@ class IndividualWorkPlan extends \yii\db\ActiveRecord
         return $this->hasMany(IndividualObjectives::className(), ['IndvidualWorkplanId' => 'IndividualWorkPlanId']);
     }
 
-        /**
+    /**
      * Gets query for [[DeptWorkPlan]].
      *
      * @return \yii\db\ActiveQuery
@@ -74,6 +95,4 @@ class IndividualWorkPlan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(DepartmentWorkPlans::className(), ['DepartmentWorkPlanId' => 'DeptWorkPlanId']);
     }
-
-
 }

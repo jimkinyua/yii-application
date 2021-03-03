@@ -115,7 +115,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         'IndividualWorkPlanId'=>$model->IndividualWorkPlanId,
                                                         'DepartmentObjId'=>$DepartmentObjective->DepartmentObjectiveId]),
                                                         'title' => 'Add Individual Objective',
-                                                        'class' => 'btn btn-success  btn-flat border-warning showModalButton']); 
+                                                        'class' => 'btn btn-success 
+                                                         btn-flat border-warning showModalButton']); 
                                             ?>
                                         </p>
                                     
