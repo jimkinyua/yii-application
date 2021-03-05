@@ -491,7 +491,7 @@ $employee_number = $identity->no;
                                             <td>'.$p->Description.'</td>
 
                                             <td>'.Html::button($title,
-                                                    [  'value' => Url::to(['evaluate-target-improvement-area/update',
+                                                    [  'value' => Url::to(['evaluate-target-improvement-areas/update',
                                                         'id'=>$p->Id,]),
                                                         'title' => 'Self Evaluate',
                                                         'class' => "$buttonstyle",
@@ -558,7 +558,7 @@ $employee_number = $identity->no;
                                             <td>'.$p->Description.'</td>
 
                                             <td>'.Html::button($title,
-                                                    [  'value' => Url::to(['evaluate-target-improvement-area/update',
+                                                    [  'value' => Url::to(['evaluate-target-improvement-areas/update',
                                                         'id'=>$p->Id,]),
                                                         'title' => 'Self Evaluate',
                                                         'class' => "$buttonstyle",
@@ -571,7 +571,7 @@ $employee_number = $identity->no;
                                 }
                                     $weighted = ($total)/1;
                                     print '<tr>
-                                                        <th style="text-align: right;color: #f39c12;">Total Score</th><th>'.($total).'</th>
+                                                <th style="text-align: right;color: #f39c12;">Total Score</th><th>'.($total).'</th>
                                         </tr>
                                         ';
                                     $scoresoft = ceil(targetWeighted($weighted,5));
